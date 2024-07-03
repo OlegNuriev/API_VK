@@ -1,0 +1,586 @@
+{
+	"info": {
+		"_postman_id": "572f6ba3-ad7d-4f1b-ae8b-c581557f8a90",
+		"name": "Home Work VK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26654451"
+	},
+	"item": [
+		{
+			"name": "About",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{base_url}}/users.get?{{client_id}}&fields=bdate,about,city,home_town&{{access_token}}&v=5.199",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users.get"
+					],
+					"query": [
+						{
+							"key": "{{client_id}}",
+							"value": null
+						},
+						{
+							"key": "fields",
+							"value": "bdate,about,city,home_town"
+						},
+						{
+							"key": "{{access_token}}",
+							"value": null
+						},
+						{
+							"key": "{{v}}",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "v",
+							"value": "5.199"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "photosCcreateAlbum",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/photos.createAlbum?title=Груффало в лесу&discription=Новый альбом&v=5.199&{{access_token}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"photos.createAlbum"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Груффало в лесу"
+						},
+						{
+							"key": "discription",
+							"value": "Новый альбом"
+						},
+						{
+							"key": "v",
+							"value": "5.199"
+						},
+						{
+							"key": "{{access_token}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "photos.getAlbums",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/photos.getAlbums?{{access_token}}&v=5.199",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"photos.getAlbums"
+					],
+					"query": [
+						{
+							"key": "{{access_token}}",
+							"value": null
+						},
+						{
+							"key": "v",
+							"value": "5.199"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SentUploadURL",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{base_url}}/photos.getUploadServer?{{access_token}}&v=5.131&album_id=304742475",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"photos.getUploadServer"
+					],
+					"query": [
+						{
+							"key": "{{access_token}}",
+							"value": null
+						},
+						{
+							"key": "{{album_id}}",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						},
+						{
+							"key": "album_id",
+							"value": "304742475"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SentPhotos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Записываем photos_list в коллекцию\", function () {\r",
+							"var list = JSON.parse(responseBody);\r",
+							"    pm.collectionVariables.set(\"photos_list\", list.photos_list)\r",
+							"});\r",
+							"pm.test(\"Записываем hash в коллекцию\", function () {\r",
+							"var hash_ = JSON.parse(responseBody);\r",
+							"    pm.collectionVariables.set(\"hash\", hash_.hash)\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file1",
+							"type": "file",
+							"src": "postman-cloud:///1ef2f2a7-fc03-46d0-b3d5-7364acbace1a"
+						},
+						{
+							"key": "file2",
+							"type": "file",
+							"src": "postman-cloud:///1ef2f2a1-306a-4830-babe-2814d801e876"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://pu.vk.com/c858512/ss2182/upload.php?act=do_add&mid=866803826&gid=0&swfupload=1&api=1&aid=304742475&hash=8593770edbbc53c9d64616e412483d16&rhash=0f37a3edd0422794fce6f455bb836877",
+					"protocol": "https",
+					"host": [
+						"pu",
+						"vk",
+						"com"
+					],
+					"path": [
+						"c858512",
+						"ss2182",
+						"upload.php"
+					],
+					"query": [
+						{
+							"key": "act",
+							"value": "do_add"
+						},
+						{
+							"key": "mid",
+							"value": "866803826"
+						},
+						{
+							"key": "gid",
+							"value": "0"
+						},
+						{
+							"key": "swfupload",
+							"value": "1"
+						},
+						{
+							"key": "api",
+							"value": "1"
+						},
+						{
+							"key": "aid",
+							"value": "304742475"
+						},
+						{
+							"key": "hash",
+							"value": "8593770edbbc53c9d64616e412483d16"
+						},
+						{
+							"key": "rhash",
+							"value": "0f37a3edd0422794fce6f455bb836877"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PhotosSaveInAlbum",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "photos_list",
+							"value": "{{photos_list}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/photos.save?server=858512&{{access_token}}&v=5.131&album_id=304742475&hash=1fba5df2fbf7f1053cfcfada8a95f4d3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"photos.save"
+					],
+					"query": [
+						{
+							"key": "server",
+							"value": "858512"
+						},
+						{
+							"key": "{{access_token}}",
+							"value": null
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						},
+						{
+							"key": "album_id",
+							"value": "304742475"
+						},
+						{
+							"key": "hash",
+							"value": "1fba5df2fbf7f1053cfcfada8a95f4d3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SentListPhotos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/photos.get?{{access_token}}&v=5.131&album_id=304742475&owner_id=866803826",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"photos.get"
+					],
+					"query": [
+						{
+							"key": "{{access_token}}",
+							"value": null
+						},
+						{
+							"key": "v",
+							"value": "5.131"
+						},
+						{
+							"key": "album_id",
+							"value": "304742475"
+						},
+						{
+							"key": "owner_id",
+							"value": "866803826"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "photosCreateComment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/photos.createComment?{{owner_id}}&{{access_token}}&photo_id=457239021&message=NewComment&v=5.199",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"photos.createComment"
+					],
+					"query": [
+						{
+							"key": "{{owner_id}}",
+							"value": null
+						},
+						{
+							"key": "{{access_token}}",
+							"value": null
+						},
+						{
+							"key": "photo_id",
+							"value": "457239021"
+						},
+						{
+							"key": "message",
+							"value": "NewComment"
+						},
+						{
+							"key": "v",
+							"value": "5.199"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2photosCreateComment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/photos.createComment?{{owner_id}}&{{access_token}}&photo_id=457239022&message=Груффало и Берёза&v=5.199",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"photos.createComment"
+					],
+					"query": [
+						{
+							"key": "{{owner_id}}",
+							"value": null
+						},
+						{
+							"key": "{{access_token}}",
+							"value": null
+						},
+						{
+							"key": "photo_id",
+							"value": "457239022"
+						},
+						{
+							"key": "message",
+							"value": "Груффало и Берёза"
+						},
+						{
+							"key": "v",
+							"value": "5.199"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "photosEditComment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/photos.editComment?{{access_token}}&{{owner_id}}&comment_id=3&message=Изменённый Комментарий&v=5.199",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"photos.editComment"
+					],
+					"query": [
+						{
+							"key": "{{access_token}}",
+							"value": null
+						},
+						{
+							"key": "{{owner_id}}",
+							"value": null
+						},
+						{
+							"key": "comment_id",
+							"value": "3"
+						},
+						{
+							"key": "message",
+							"value": "Изменённый Комментарий"
+						},
+						{
+							"key": "v",
+							"value": "5.199"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "photosDelete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/photos.delete?{{owner_id}}&photo_id=457239021&v=5.199",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"photos.delete"
+					],
+					"query": [
+						{
+							"key": "{{owner_id}}",
+							"value": null
+						},
+						{
+							"key": "photo_id",
+							"value": "457239021"
+						},
+						{
+							"key": "v",
+							"value": "5.199"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "photosDeleteAlbum",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/photos.deleteAlbum?{{access_token}}&album_id=304742475&v=5.199",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"photos.deleteAlbum"
+					],
+					"query": [
+						{
+							"key": "{{access_token}}",
+							"value": null
+						},
+						{
+							"key": "album_id",
+							"value": "304742475"
+						},
+						{
+							"key": "v",
+							"value": "5.199"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "vk1.a.-Z-ZxcyuUgahK6aTXyaERIh2fUrLy0lNxf_SKeuEF0iAdBl-jxmbu2vnjRFaMDg88lezfJOhYRuP3HcmCzycdQxAsP7kd4r0pdh5QQn0h5V6llQqA_kfdAb3mVa7Loq7PqvlMrhzY36NJlScovYcKxJxBxwbxQamkZ64o6-GYUJrRSjWMaSlxQfUpGbmQleqXxClmmhKlCh56PyTXpC6Gg",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "client_id",
+			"value": "866803826",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "vk1.a.-Z-ZxcyuUgahK6aTXyaERIh2fUrLy0lNxf_SKeuEF0iAdBl-jxmbu2vnjRFaMDg88lezfJOhYRuP3HcmCzycdQxAsP7kd4r0pdh5QQn0h5V6llQqA_kfdAb3mVa7Loq7PqvlMrhzY36NJlScovYcKxJxBxwbxQamkZ64o6-GYUJrRSjWMaSlxQfUpGbmQleqXxClmmhKlCh56PyTXpC6Gg",
+			"type": "string"
+		},
+		{
+			"key": "v",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "album_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "photos_list",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "owner_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "hash",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
